@@ -9,6 +9,9 @@ dnf5 -y install ublue-os-signing
 cp /usr/etc/containers/policy.json /etc/containers/policy.json
 rm -rf /usr/etc
 
+# Install Intel software
+dnf5 -y install ipmctl
+
 # Install Tailscale
 dnf5 config-manager addrepo --id=tailscale --set=baseurl=https://pkgs.tailscale.com/stable/fedora/tailscale.repo --set=enabled=0
 dnf5 -y install --enable-repo=tailscale --nogpgcheck tailscale
