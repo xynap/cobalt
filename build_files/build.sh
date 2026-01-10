@@ -12,6 +12,13 @@ rm -rf /usr/etc
 # Install utilities
 dnf5 -y install firewalld podman-compose smartmontools
 
+# Install Nvidia
+dnf5 -y install /tmp/akmods-nvidia/ublue-os/ublue-os-nvidia*.rpm
+dnf5 config-manager setopt fedora-nvidia.enabled=1 nvidia-container-toolkit.enabled=1
+dnf5 -y install /tmp/akmods-nvidia/kmods/kmod-nvidia*.rpm
+dnf5 -y install nvidia-container-toolkit nvidia-driver-cuda
+dnf5 config-manager setopt fedora-nvidia.enabled=0 nvidia-container-toolkit.enabled=0
+
 # Install Tailscale
 dnf5 config-manager addrepo --id=tailscale --set=baseurl=https://pkgs.tailscale.com/stable/fedora/tailscale.repo --set=enabled=0
 dnf5 -y install --enable-repo=tailscale --nogpgcheck tailscale
