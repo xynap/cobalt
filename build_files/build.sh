@@ -10,7 +10,7 @@ cp /usr/etc/containers/policy.json /etc/containers/policy.json
 rm -rf /usr/etc
 
 # Install utilities
-dnf5 -y install firewalld podman-compose smartmontools
+dnf5 -y install docker-compose firewalld smartmontools
 
 # Install Nvidia
 dnf5 -y install /tmp/akmods-nvidia/ublue-os/ublue-os-nvidia*.rpm
@@ -30,9 +30,8 @@ depmod -a "$(rpm -qa kernel --queryformat '%{VERSION}-%{RELEASE}.%{ARCH}')"
 echo "zfs" > /etc/modules-load.d/zfs.conf
 
 # Setup services
-systemctl disable docker.socket
-systemctl disable zincati.service
 systemctl enable rpm-ostreed-automatic.timer
+systemctl disable zincati.service
 
 # Copy system files
 cp -af /ctx/system_files/. /
