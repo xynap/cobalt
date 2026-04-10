@@ -5,11 +5,11 @@ COPY system_files /system_files
 
 # akmods
 FROM ghcr.io/ublue-os/akmods:coreos-stable-43 AS akmods-common
-FROM ghcr.io/ublue-os/akmods-nvidia-open:coreos-stable-43-6.17.12-300.fc43.x86_64 AS akmods-nvidia
-FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-43-6.17.12-300.fc43.x86_64 AS akmods-zfs
+FROM ghcr.io/ublue-os/akmods-nvidia-open:coreos-stable-43 AS akmods-nvidia
+FROM ghcr.io/ublue-os/akmods-zfs:coreos-testing-43 AS akmods-zfs
 
 # Base Image
-FROM quay.io/fedora/fedora-coreos:43.20260105.3.0
+FROM quay.io/fedora/fedora-coreos:stable
 
 ### MODIFICATIONS
 ## Make modifications desired in your image and install packages by modifying the build.sh script
