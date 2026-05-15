@@ -10,7 +10,13 @@ cp /usr/etc/containers/policy.json /etc/containers/policy.json
 rm -rf /usr/etc
 
 # Install utilities
-dnf5 -y install docker-compose firewalld smartmontools
+dnf5 -y install \
+  docker-compose \
+  firewalld \
+  smartmontools \
+  libguestfs-tools \
+  libvirt-daemon-kvm \
+  virt-install
 
 # Install Nvidia
 dnf5 -y install /tmp/akmods-nvidia/ublue-os/ublue-os-nvidia*.rpm
