@@ -13,10 +13,7 @@ rm -rf /usr/etc
 dnf5 -y install \
   docker-compose \
   firewalld \
-  smartmontools \
-  libguestfs-tools \
-  libvirt-daemon-kvm \
-  virt-install
+  smartmontools
 
 # Install Nvidia
 dnf5 -y install /tmp/akmods-nvidia/ublue-os/ublue-os-nvidia*.rpm
