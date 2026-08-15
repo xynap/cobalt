@@ -5,7 +5,6 @@ COPY system_files /system_files
 
 # akmods
 FROM ghcr.io/ublue-os/akmods:coreos-stable-44 AS akmods-common
-FROM ghcr.io/ublue-os/akmods-nvidia-open:coreos-stable-44 AS akmods-nvidia
 FROM ghcr.io/ublue-os/akmods-zfs:coreos-stable-44 AS akmods-zfs
 
 # Base Image
@@ -16,7 +15,6 @@ FROM quay.io/fedora/fedora-coreos:stable
 ## The following RUN directive does all the things required to run "build.sh" as recommended
 RUN --mount=type=bind,from=ctx,source=/,target=/ctx \
     --mount=type=bind,from=akmods-common,src=/rpms,dst=/tmp/akmods-common \
-    --mount=type=bind,from=akmods-nvidia,src=/rpms,dst=/tmp/akmods-nvidia \
     --mount=type=bind,from=akmods-zfs,src=/rpms,dst=/tmp/akmods-zfs \
     --mount=type=cache,dst=/var/cache \
     --mount=type=cache,dst=/var/log \
